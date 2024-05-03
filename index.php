@@ -1,27 +1,5 @@
 <?php
-function generatorePsw()
-{
-    // Verific che il parametro psw sia tramite GET
-    if (isset($_GET["psw"])) {
-        // Lunghezza della password dalla query string
-        $number = $_GET["psw"];
-        // Caratteri per generare la password
-        $simboli = "!?&%$@#abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-        $pass = array();
-        $simboli_length = strlen($simboli) - 1;
-        // qui genero la password random con un ciclo
-        for ($i = 0; $i < $number; $i++) {
-            $n = rand(0, $simboli_length);
-            $pass[] = $simboli[$n];
-        }
-
-        //qui restituisco la password 
-        return implode($pass);
-    } else {
-        // Se il parametro 'psw' non è stato passato, restituisci una stringa vuota
-        return "";
-    }
-}
+include_once __DIR__ . '/function.php'
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +17,7 @@ function generatorePsw()
 
     <div class="container my-5">
         <h1>Strong Password Generator</h1>
-        <h4>Genera una pasword sicura</h4>
+        <h4>Genera una password sicura</h4>
     </div>
 
     <div class="container my-5">
